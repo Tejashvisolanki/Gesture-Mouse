@@ -25,12 +25,12 @@ utils/                   # Gesture, smoothing, and voice helpers
 
 ## Setup
 
-Use Python 3.11 or 3.12. Some webcam/ML dependencies, especially MediaPipe, may not have wheels for the newest Python releases.
+Use Python 3.11. MediaPipe, the hand-tracking library used by this app, may not have compatible wheels for newer Python releases like Python 3.14.
 
 Create and activate a virtual environment:
 
 ```powershell
-python -m venv venv
+py -3.11 -m venv venv
 .\venv\Scripts\activate
 ```
 
