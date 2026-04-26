@@ -25,6 +25,8 @@ utils/                   # Gesture, smoothing, and voice helpers
 
 ## Setup
 
+Use Python 3.11 or 3.12. Some webcam/ML dependencies, especially MediaPipe, may not have wheels for the newest Python releases.
+
 Create and activate a virtual environment:
 
 ```powershell
@@ -79,6 +81,8 @@ models/gesture_model.pkl
 ```
 
 ## Build Executables
+
+Build after training, because `GestureMouseCore.spec` packages the locally generated model.
 
 ```powershell
 pyinstaller GestureMouseCore.spec
