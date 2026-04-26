@@ -1,0 +1,32 @@
+# Python cache / bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Local environment files
+.env
+.env.*
+
+# Build outputs
+build/
+dist/
+*.exe
+*.pkg
+
+# Runtime output
+screenshots/
+*.log
+run_stdout_*.log
+run_stderr_*.log
+
+# Editor / OS noise
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+

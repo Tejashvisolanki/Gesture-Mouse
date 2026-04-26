@@ -1,0 +1,11 @@
+{
+  "camera_index": 0,
+  "screen_smoothing": 7,
+  "dead_zone": 8,
+  "confidence_threshold": 0.85,
+  "click_cooldown": 0.3,
+  "scroll_speed": 5,
+  "kalman_r": 10,
+  "kalman_q": 0.1,
+  "gestures": ["move", "click", "right_click", "scroll_up", "scroll_down", "freeze", "drag", "screenshot"]
+}

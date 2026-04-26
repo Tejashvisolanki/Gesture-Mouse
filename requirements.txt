@@ -1,0 +1,13 @@
+opencv-python
+mediapipe
+pyautogui
+numpy
+filterpy
+SpeechRecognition
+PyAudio
+pystray
+Pillow
+pandas
+scikit-learn
+pyinstaller
+
