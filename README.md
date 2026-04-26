@@ -18,8 +18,8 @@ tray.py                  # System tray launcher
 collect_data.py          # Webcam gesture data collector
 train_model.py           # Trains the gesture classifier
 config.json              # Runtime settings and gesture names
-data/gestures.csv        # Collected training samples
-models/gesture_model.pkl # Trained model and label encoder
+data/gestures.csv        # Generated local training samples
+models/gesture_model.pkl # Generated local model and label encoder
 utils/                   # Gesture, smoothing, and voice helpers
 ```
 
@@ -47,6 +47,8 @@ pipwin install pyaudio
 
 ## Run
 
+Before first run, collect gesture samples and train the model so `models/gesture_model.pkl` exists.
+
 ```powershell
 python main.py
 ```
@@ -69,6 +71,13 @@ python train_model.py
 
 The trained model is saved to `models/gesture_model.pkl`.
 
+Generated training artifacts are intentionally ignored by Git:
+
+```text
+data/gestures.csv
+models/gesture_model.pkl
+```
+
 ## Build Executables
 
 ```powershell
@@ -77,4 +86,3 @@ pyinstaller GestureMouse.spec
 ```
 
 The tray app launches the core gesture mouse executable.
-

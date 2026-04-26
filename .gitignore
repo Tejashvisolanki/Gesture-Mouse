@@ -24,9 +24,12 @@ screenshots/
 run_stdout_*.log
 run_stderr_*.log
 
+# Generated training artifacts
+data/gestures.csv
+models/gesture_model.pkl
+
 # Editor / OS noise
 .vscode/
 .idea/
 Thumbs.db
 Desktop.ini
-
