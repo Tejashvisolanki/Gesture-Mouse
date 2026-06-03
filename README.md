@@ -1,92 +1,143 @@
-# GestureMouse
+# 🖱️ Gesture Mouse
 
-GestureMouse is a Windows-focused Python app that turns webcam hand gestures and voice commands into mouse, keyboard, scrolling, dragging, and screenshot actions.
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platform: Windows](https://img.shields.io/badge/Platform-Windows-lightblue.svg)](https://www.microsoft.com/windows)
 
-## Features
+A powerful Python application that transforms hand gestures and voice commands into mouse, keyboard, and system actions using **MediaPipe** hand tracking and machine learning.
 
-- Hand gesture recognition with MediaPipe landmarks and a scikit-learn model
-- Cursor smoothing with a Kalman filter
-- Mouse movement, left click, right click, scroll, drag, freeze, and screenshot gestures
-- Background voice commands for search, clicking, scrolling, typing, copy/paste, window control, and launching common apps
-- Optional system tray launcher for packaged builds
+## ✨ Features
 
-## Project Structure
+- 🖐️ **Hand Gesture Recognition** - Real-time hand tracking with MediaPipe + scikit-learn classifier
+- 🎤 **Voice Commands** - Background voice control (search, click, scroll, type, copy/paste)
+- 🖱️ **Mouse Control** - Move, click, right-click, scroll, drag, and freeze gestures
+- 📸 **Screenshots** - Capture screenshots with hand gestures
+- ✨ **Cursor Smoothing** - Kalman filter for smooth cursor movement
+- 🎯 **Configurable Gestures** - Customize gesture names and parameters in `config.json`
+- 💾 **Model Training** - Train custom gesture models with your own data
 
-```text
-main.py                  # Live gesture mouse app
-tray.py                  # System tray launcher
-collect_data.py          # Webcam gesture data collector
-train_model.py           # Trains the gesture classifier
-config.json              # Runtime settings and gesture names
-data/gestures.csv        # Generated local training samples
-models/gesture_model.pkl # Generated local model and label encoder
-utils/                   # Gesture, smoothing, and voice helpers
-```
+## 🚀 Quick Start
 
-## Setup
+### Prerequisites
+- Windows OS
+- Python 3.11+ (MediaPipe compatibility)
+- Webcam
 
-Use Python 3.11. MediaPipe, the hand-tracking library used by this app, may not have compatible wheels for newer Python releases like Python 3.14.
+### Installation
 
-Create and activate a virtual environment:
+```bash
+# Clone the repository
+git clone https://github.com/Tejashvisolanki/Gesture-Mouse.git
+cd Gesture-Mouse
 
-```powershell
+# Create virtual environment
 py -3.11 -m venv venv
 .\venv\Scripts\activate
-```
 
-Install dependencies:
-
-```powershell
+# Install dependencies
 pip install -r requirements.txt
-```
 
-If `PyAudio` fails to install on Windows, install a compatible wheel or use:
-
-```powershell
-pip install pipwin
+# Note: If PyAudio fails
 pipwin install pyaudio
 ```
 
-## Run
+### Train Model (First Run)
 
-Before first run, collect gesture samples and train the model so `models/gesture_model.pkl` exists.
-
-```powershell
-python main.py
-```
-
-Press `Q` in the OpenCV camera window to quit.
-
-## Collect New Gesture Data
-
-```powershell
+```bash
+# Collect gesture samples
 python collect_data.py
-```
 
-Choose one of the gesture names from `config.json`, hold the gesture, press Space to save a sample, and press `Q` to quit.
-
-## Train The Model
-
-```powershell
+# Train the classifier
 python train_model.py
 ```
 
-The trained model is saved to `models/gesture_model.pkl`.
+### Run Application
 
-Generated training artifacts are intentionally ignored by Git:
-
-```text
-data/gestures.csv
-models/gesture_model.pkl
+```bash
+python main.py
 ```
 
-## Build Executables
+Press **`Q`** in the camera window to exit.
 
-Build after training, because `GestureMouseCore.spec` packages the locally generated model.
+## 📁 Project Structure
 
-```powershell
+```
+├── main.py                      # Main gesture mouse application
+├── tray.py                      # System tray launcher
+├── collect_data.py              # Gesture data collector
+├── train_model.py               # Model trainer
+├── config.json                  # Configuration & gesture names
+├── requirements.txt             # Python dependencies
+├── utils/
+│   ├── smoother.py             # Kalman filter cursor smoothing
+│   └── voice.py                # Voice command handler
+└── models/
+    └── gesture_model.pkl       # Trained model (generated)
+```
+
+## 🎮 Available Gestures
+
+| Gesture | Action |
+|---------|--------|
+| Move | Mouse movement |
+| Click | Left click |
+| Right Click | Right click |
+| Scroll Up | Scroll up |
+| Scroll Down | Scroll down |
+| Drag | Start drag operation |
+| Freeze | End drag operation |
+| Screenshot | Capture screenshot |
+
+## 🎙️ Voice Commands
+
+- "Search YouTube" - Open YouTube search
+- "Click" - Perform click
+- "Scroll up/down" - Scroll
+- And many more customizable commands!
+
+## ⚙️ Configuration
+
+Edit `config.json` to customize:
+
+```json
+{
+  "camera_index": 0,              // Webcam index
+  "confidence_threshold": 0.85,   // Gesture confidence
+  "click_cooldown": 0.3,          // Minimum time between clicks
+  "scroll_speed": 5,              // Scroll speed
+  "kalman_r": 10,                 // Kalman filter R parameter
+  "kalman_q": 0.1                 // Kalman filter Q parameter
+}
+```
+
+## 🔨 Build Executable
+
+```bash
+# Build standalone executables
 pyinstaller GestureMouseCore.spec
 pyinstaller GestureMouse.spec
 ```
 
-The tray app launches the core gesture mouse executable.
+## 📊 Technology Stack
+
+- **MediaPipe** - Hand pose detection
+- **OpenCV** - Real-time video capture
+- **scikit-learn** - Gesture classification
+- **PyAudio** - Voice input
+- **Kalman Filter** - Cursor smoothing
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to submit issues and pull requests.
+
+## 📝 License
+
+This project is licensed under the MIT License - see LICENSE file for details.
+
+## 👤 Author
+
+**Tejashvi Solanki** - [GitHub](https://github.com/Tejashvisolanki)
+
+---
+
+⭐ If you find this project helpful, please consider starring it!
